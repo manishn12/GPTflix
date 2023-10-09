@@ -9,3 +9,5 @@
 
 - To Do
   - Implement Location based Translation
+  - Get Data From Genre(Category) currently for every category we need to create new useHook, create new Hook which takes genre_id and gives movies based on category.
+    Use this MoviesList Genre -> https://api.themoviedb.org/3/discover/movie?&with_genres=27 (replace 27 with genre_id)
