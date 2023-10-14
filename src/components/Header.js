@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
 import { NETFLIX_LOGO, SUPPORTED_LANGUAGE } from "../utils/constants";
-import { toggleGPTSearchView } from "../utils/GPTSlice";
+import { addGPtMovies, toggleGPTSearchView } from "../utils/GPTSlice";
 import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
@@ -47,6 +47,7 @@ const Header = () => {
 
   const handleGPTSearch = () => {
     dispatch(toggleGPTSearchView());
+    dispatch(addGPtMovies({ moviesNames: null, moviesResults: null }));
   };
 
   const handleLanguageChange = (e) => {
@@ -55,10 +56,10 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black flex justify-between z-50">
-      <img className="w-44" src={NETFLIX_LOGO} alt="netflix's logo" />
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black flex flex-col md:flex-row justify-between z-50">
+      <img className="w-44 mx-auto md:mx-0" src={NETFLIX_LOGO} alt="netflix's logo" />
       {user && (
-        <div className="flex p-2 ">
+        <div className="flex p-2 justify-between">
           {showGPTSearch && (
             <select className="p-2 bg-gray-900 text-white px-4 m-2 focus:outline-none" onChange={handleLanguageChange}>
               {SUPPORTED_LANGUAGE.map((lang) => (
@@ -71,7 +72,7 @@ const Header = () => {
           <button className="px-4 py-2 mx-4 my-2 rounded-lg bg-red-600 text-white cursor-pointer" onClick={handleGPTSearch}>
             {showGPTSearch ? "Home Page" : "GPT Search"}
           </button>
-          <img className="w-12 h-12" alt="profile-icon" src={user.photoURL ? user.photoURL : ProfileIcon} />
+          <img className="hidden md:block w-12 h-12" alt="profile-icon" src={user.photoURL ? user.photoURL : ProfileIcon} />
           <button className="text-white font-bold" onClick={handleSignOut}>
             Sign Out
           </button>

@@ -91,9 +91,9 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img src={BACKGROUND_IMAGE} alt="Netflix" />
+        <img className="h-screen object-cover" src={BACKGROUND_IMAGE} alt="Netflix" />
       </div>
-      <form onSubmit={handleFormSubmit} className="p-12 bg-black absolute my-36 w-3/12 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
+      <form onSubmit={handleFormSubmit} className="p-12 bg-black absolute my-36 w-10/12 md:w-3/12 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
         <h1 className="font-bold text-2xl">{isSignInForm ? "Sign IN" : "Sign Up"}</h1>
         {!isSignInForm && (
           <input type="text" name="fullName" placeholder="Full Name" className="p-4 my-4 w-full bg-gray-800" value={formData.fullName} onChange={handleInput} onFocus={() => setErrorMsg(null)} />
